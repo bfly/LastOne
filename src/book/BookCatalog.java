@@ -22,7 +22,7 @@ public class BookCatalog {
 	 * Creates a book catalog and initializes the internal map for storing books.
 	 */
 	public BookCatalog() {
-		this.bookMap = new TreeMap<String, Book>();
+		this.bookMap = new TreeMap<>();
 	}
 
 	/**
@@ -39,7 +39,10 @@ public class BookCatalog {
 	 * @param book to add
 	 */
 	public void addBook(Book book) {
-		// TODO Implement method
+		String[] tokens = book.getTitle().split(":");
+		String title = tokens[0].strip();
+		if (!bookMap.containsKey(title) && title != null)
+			bookMap.put(title, book);
 	}
 	
 	/**
@@ -50,9 +53,7 @@ public class BookCatalog {
 	 * @return book
 	 */
 	public Book getBookByTitle(String title) {
-		// TODO Implement method
-		
-		return null;
+		return bookMap.get(title);
 	}
 	
 	/**
@@ -63,7 +64,9 @@ public class BookCatalog {
 	 * @return book
 	 */
 	public Book getBookByAuthor(String author) {
-		// TODO Implement method
+		for (Map.Entry<String, Book> entry : bookMap.entrySet()) {
+			if (entry.getValue().getAuthor().equals(author)) return entry.getValue();
+		}
 		
 		return null;
 	}

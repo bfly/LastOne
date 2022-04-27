@@ -72,7 +72,16 @@ public class Book {
 		// -- Make sure to strip() the title of all leading and trailing whitespace.
 		// If a line starts with "Author:", get the text after it, and set this.author.
 		// -- Make sure to strip() the author's name of all leading and trailing whitespace.
-		
+		for (String line : lines) {
+			if (line.startsWith("Title:")) {
+				int start = ":".indexOf(line);
+				this.title = line.substring(start + 2).strip();
+			}
+			if (line.startsWith("Author:")) {
+				int start = ":".indexOf(line);
+				this.author = line.substring(start + 2).strip();
+			}
+		}
 	}
 	
 	/**
@@ -81,9 +90,8 @@ public class Book {
 	 * @return the title
 	 */
 	public String getTitle() {
-		// TODO Implement method
-
-		return null;
+		if (this.title == null) return null;
+		return title.substring(6).strip();
 	}
 
 	/**
@@ -92,9 +100,8 @@ public class Book {
 	 * @return the author
 	 */
 	public String getAuthor() {
-		// TODO Implement method
-
-		return null;
+		if (this.author == null) return null;
+		return author.substring(6).strip();
 	}
 	
 	/**
@@ -135,7 +142,22 @@ public class Book {
 		// where each key is a word and the value is the count of the word.  Remember, ignore
 		// case when counting the words. (You could convert them all to lowercase.)
 		// Also, set the value of this.wordCount to the total number of words.
-		
+		wordCounts = new TreeMap<>();
+		String[] tokens;
+		for (String line : lines) {
+				line = line.replaceAll("\\.", " ");
+				tokens = line.split("\s+");
+				for (String token : tokens) {
+					token = token.replaceAll("[^a-zA-Z_0-9+\\-\\%]", " ")
+							.replaceAll("!", "").strip().toLowerCase()
+					;
+					if (wordCounts.containsKey(token))
+						wordCounts.put(token, wordCounts.get(token) + 1);
+					else
+						wordCounts.put(token, 1);
+			}
+		}
+
 	}
 	
 	/**
@@ -145,7 +167,7 @@ public class Book {
 	public int getTotalWordCount() {
 		// TODO Implement method
 
-		return 0;
+		return wordCounts.values().stream().mapToInt(Integer::valueOf).sum();
 	}
 
 	/**
@@ -157,9 +179,7 @@ public class Book {
 	 * @return count of unique words
 	 */
 	public int getUniqueWordCount() {
-		// TODO Implement method
-
-		return 0;
+		return (int) wordCounts.values().stream().mapToInt(Integer::valueOf).count();
 	}
 	
 	/**
@@ -171,10 +191,7 @@ public class Book {
 	 * @return count of given word
 	 */
 	public int getSpecificWordCount(String word) {
-		
-		// TODO Implement method
-
-		return 0;
+		return wordCounts.get(word);
 	}
 	
 	/**

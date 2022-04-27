@@ -1,9 +1,8 @@
-package book;// 20220418
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.*;
 
+import book.Book;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -57,7 +56,7 @@ class BookTest {
 		///// DO NOT MODIFY THE TEST CODE BELOW! ///////
 		
 		//create empty list and book
-		List<String> bookLines = new ArrayList<String>();
+		List<String> bookLines = new ArrayList<>();
 		Book book = new Book(bookLines);
 		
 		//confirm book lines is empty
@@ -65,12 +64,12 @@ class BookTest {
 		
 		//create list with 2 lines and book
 		String[] actualLinesArr = {"My book's first line.", "My book's second line."};
-		bookLines = new ArrayList<String>(Arrays.asList(actualLinesArr));
+		bookLines = new ArrayList<>(Arrays.asList(actualLinesArr));
 		book = new Book(bookLines);
 				
 		//create array with 2 expected lines 
 		String[] expectedLinesArr = {"My book's first line.", "My book's second line."};
-		List<String> expectedLines = new ArrayList<String>(Arrays.asList(expectedLinesArr));
+		List<String> expectedLines = new ArrayList<>(Arrays.asList(expectedLinesArr));
 						
 		//compare to 2 actual lines 
 		assertEquals(expectedLines, book.getLines(), "The expected lines do not match the actual book lines.");
@@ -81,7 +80,7 @@ class BookTest {
 			"Author: Dr. Seuss",
 			"The sun did not shine."
 		};
-		List<String> expectedLines1 = new ArrayList<String>(Arrays.asList(expectedLines1Array));
+		List<String> expectedLines1 = new ArrayList<>(Arrays.asList(expectedLines1Array));
 				
 		//compare to first 3 actual lines from cat in the hat
 		assertEquals(expectedLines1, this.catInTheHatBook.getLines().subList(0, 3), "The expected 3 lines do not match the actual first 3 'The Cat in the Hat' book lines.");
@@ -102,7 +101,7 @@ class BookTest {
 		
 		//create list and book
 		//with book title
-		List<String> bookLines = new ArrayList<String>();
+		List<String> bookLines = new ArrayList<>();
 		bookLines.add("Title: Test book.Book Title");
 		Book book = new Book(bookLines);
 		
@@ -111,15 +110,17 @@ class BookTest {
 		
 		//create list and book
 		//with book title with whitespace before it
-		bookLines = new ArrayList<String>();
+		bookLines = new ArrayList<>();
 		bookLines.add("Title:    A Different book.Book Title");
 		book = new Book(bookLines);
 		
 		//confirm book title
-		assertEquals("A Different book.Book Title", book.getTitle(), "The expected title does not match the actual book title.");
+		assertEquals("A Different book.Book Title", book.getTitle(),
+				"The expected title does not match the actual book title.");
 		
 		//confirm book title for cat in the hat
-		assertEquals("The Cat in the Hat", this.catInTheHatBook.getTitle(), "The expected title does not match the actual 'The Cat in the Hat' book title.");
+		assertEquals("The Cat in the Hat", this.catInTheHatBook.getTitle(),
+				"The expected title does not match the actual 'The Cat in the Hat' book title.");
 
 		///// DO NOT MODIFY THE TEST CODE ABOVE! ///////
 		////////////////////////////////////////////////
@@ -137,7 +138,7 @@ class BookTest {
 		
 		//create list and book
 		//with book author
-		List<String> bookLines = new ArrayList<String>();
+		List<String> bookLines = new ArrayList<>();
 		bookLines.add("Author: Joseph Berry");
 		Book book = new Book(bookLines);
 		
@@ -146,7 +147,7 @@ class BookTest {
 		
 		//create list and book
 		//with book author with whitespace before it
-		bookLines = new ArrayList<String>();
+		bookLines = new ArrayList<>();
 		bookLines.add("Author:    Rhonda Fierri");
 		book = new Book(bookLines);
 		
@@ -171,7 +172,7 @@ class BookTest {
 		///// DO NOT MODIFY THE TEST CODE BELOW! ///////
 		
 		//create list and book
-		List<String> bookLines = new ArrayList<String>();
+		List<String> bookLines = new ArrayList<>();
 		bookLines.add("one two three");
 		Book book = new Book(bookLines);
 		
@@ -179,7 +180,7 @@ class BookTest {
 		assertEquals(3, book.getTotalWordCount(), "The total word count is incorrect. The expected answer is 3.");
 		
 		//create list and book
-		bookLines = new ArrayList<String>();
+		bookLines = new ArrayList<>();
 		bookLines.add("one two three.  four five six.");
 		book = new Book(bookLines);
 		
@@ -187,7 +188,7 @@ class BookTest {
 		assertEquals(6, book.getTotalWordCount(), "The total word count is incorrect. The expected answer is 6.");
 
 		// create list and book
-    	bookLines = new ArrayList<String>();
+    	bookLines = new ArrayList<>();
     	bookLines.add("*hello");
     	book = new Book(bookLines);
 
@@ -195,7 +196,7 @@ class BookTest {
     	assertEquals(1, book.getTotalWordCount(), "The total word count is incorrect. The expected answer is 1.");
 		
 		//create list and book
-		bookLines = new ArrayList<String>();
+		bookLines = new ArrayList<>();
 		bookLines.add("Title: My book.Book Title");
 		bookLines.add("Author: My book.Book Author");
 		bookLines.add("one, two, three.  four, five, six.");
@@ -222,7 +223,7 @@ class BookTest {
 		///// DO NOT MODIFY THE TEST CODE BELOW! ///////
 		
 		//create list and book
-		List<String> bookLines = new ArrayList<String>();
+		List<String> bookLines = new ArrayList<>();
 		bookLines.add("one two three");
 		Book book = new Book(bookLines);
 		
@@ -230,7 +231,7 @@ class BookTest {
 		assertEquals(3, book.getUniqueWordCount(), "The unique word count is incorrect. The expected answer is 3.");
 		
 		//create list and book
-		bookLines = new ArrayList<String>();
+		bookLines = new ArrayList<>();
 		bookLines.add("one two three.  four five six.  ONE.");
 		book = new Book(bookLines);
 		
@@ -238,7 +239,7 @@ class BookTest {
 		assertEquals(6, book.getUniqueWordCount(), "The unique word count is incorrect. The expected answer is 6.");
 		
 		//create list and book
-		bookLines = new ArrayList<String>();
+		bookLines = new ArrayList<>();
 		bookLines.add("Title: My book.Book title");
 		bookLines.add("Author: My book author");
 		bookLines.add("one, two, three.  four, five, six.");
@@ -265,7 +266,7 @@ class BookTest {
 		///// DO NOT MODIFY THE TEST CODE BELOW! ///////
 		
 		//create list and book
-		List<String> bookLines = new ArrayList<String>();
+		List<String> bookLines = new ArrayList<>();
 		bookLines.add("one two three");
 		Book book = new Book(bookLines);
 		
@@ -273,7 +274,7 @@ class BookTest {
 		assertEquals(1, book.getSpecificWordCount("three"), "The specific word count is incorrect. The expected answer is 1.");
 		
 		//create list and book
-		bookLines = new ArrayList<String>();
+		bookLines = new ArrayList<>();
 		bookLines.add("one two three.  four five six. ONE.");
 		book = new Book(bookLines);
 		
@@ -281,7 +282,7 @@ class BookTest {
 		assertEquals(2, book.getSpecificWordCount("one"), "The specific word count is incorrect. The expected answer is 2.");
 		
 		//create list and book
-		bookLines = new ArrayList<String>();
+		bookLines = new ArrayList<>();
 		bookLines.add("Title: My book.Book title");
 		bookLines.add("Author: My book author");
 		bookLines.add("Review: GREAT BOOK!");

@@ -1,5 +1,7 @@
 package book.file;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
@@ -22,8 +24,20 @@ public class BookFileReader {
 		// Strip each line of whitespace
 		// If a line is made up entirely of whitespace, ignore it and do not add it to the list.
 		// Return a list of lines.
-		
-		return null;
+		Scanner in;
+		String line;
+		List<String> strings = new ArrayList<>();
+		try {
+			in = new Scanner(new File(fileName));
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+		while (in.hasNextLine()) {
+		line = in.nextLine().strip();
+		if (line.length() > 0)
+			strings.add(line);
+		}
+		return strings;
 	}
 	
 	///// DO NOT CHANGE CODE IN MAIN METHOD! /////

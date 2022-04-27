@@ -1,8 +1,9 @@
-package book;	// 20220418
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.*;
 
+import book.Book;
+import book.BookCatalog;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
